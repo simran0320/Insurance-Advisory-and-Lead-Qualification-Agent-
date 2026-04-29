@@ -7,27 +7,30 @@ app = FastAPI()
 
 FILE_PATH = "leads.xlsx"
 
+from typing import Optional, List
+
 class Lead(BaseModel):
-    lead_id: str
-    call_date: str
-    call_duration_seconds: int
-    customer_name: str
-    customer_phone: str
-    age: str
-    dependents: str
-    existing_coverage: str
-    existing_coverage_details: str
-    employment_type: str
-    smoker: str
-    lead_classification: str
-    engagement_notes: str
-    hook_for_advisor: str
-    callback_confirmed: bool
-    callback_date: str
-    callback_time: str
-    crosssell_interest: list
-    call_outcome: str
-    call_summary: str
+    lead_id: Optional[str] = None
+    call_date: Optional[str] = None
+    call_duration_seconds: Optional[int] = None
+    customer_name: Optional[str] = None
+    customer_phone: Optional[str] = None
+    age: Optional[str] = None
+    dependents: Optional[str] = None
+    existing_coverage: Optional[str] = None
+    existing_coverage_details: Optional[str] = None
+    employment_type: Optional[str] = None
+    smoker: Optional[str] = None
+    lead_classification: Optional[str] = None
+    engagement_notes: Optional[str] = None
+    hook_for_advisor: Optional[str] = None
+    callback_confirmed: Optional[bool] = None
+    callback_date: Optional[str] = None
+    callback_time: Optional[str] = None
+    crosssell_interest: Optional[List[str]] = []
+    call_outcome: Optional[str] = None
+    call_summary: Optional[str] = None
+
 
 @app.post("/save-lead")
 def save_lead(lead: Lead):
